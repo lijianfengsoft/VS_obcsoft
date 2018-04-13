@@ -31,6 +31,7 @@
 #include "csp.h"
 #include "csp_thread.h"
 #include "csp_if_kiss.h"
+#include "csp_if_i2c.h"
 
 #define MY_ADDRESS 1
 
@@ -89,23 +90,23 @@ void bsp_init(void)
 
 	csp_usart3_init(115200);
 
+	PCA9665_IO_Init();
+	csp_i2c_init(MY_ADDRESS, 0, 400);
+
 	usart_set_callback(my_usart_rx);
-	csp_kiss_init(&csp_if_kiss, &csp_kiss_driver, usart3_putc, usart_insert, "KISS"); 
+	csp_kiss_init(&csp_if_kiss, &csp_kiss_driver, usart3_putc, usart_insert, "KISS"); 	
+ 
+	//csp_route_set(2, &csp_if_kiss, CSP_NODE_MAC);
+	//csp_route_set(CSP_DEFAULT_ROUTE, &csp_if_kiss, 32);
 
-	
+	csp_route_set(2, &csp_if_i2c, CSP_NODE_MAC);
+	csp_route_set(CSP_DEFAULT_ROUTE, &csp_if_i2c, 32);
 
-	csp_route_set(2, &csp_if_kiss, CSP_NODE_MAC);
-	csp_route_set(CSP_DEFAULT_ROUTE, &csp_if_kiss, 32);
 	csp_route_start_task(1024 * 1, 3);
-
 
 	ad7490_spi_init();
 	//AD7490_Read();
 
-	PCA9665_IO_Init();
-	i2c_init(0, I2C_MASTER, 0x1A, 400 , 5, 5, NULL);
-	pca9665_isr_init();
-	 
 	temp = (int)Get_Temprate();
 	printf("\r\ntemprate=%d\r\n",temp);
 	while (SD_Init());

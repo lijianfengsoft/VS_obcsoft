@@ -47,7 +47,8 @@ VisualGDB/Debug/bsp_pca9665.o: bsp_user/bsp_pca9665.c \
  h:\vs开发stm32\sysgcc\arm-eabi\sys-include\machine\_types.h \
  h:\vs开发stm32\sysgcc\arm-eabi\sys-include\sys\lock.h \
  h:\vs开发stm32\sysgcc\arm-eabi\sys-include\sys\cdefs.h \
- h:\vs开发stm32\sysgcc\arm-eabi\sys-include\sys\string.h
+ h:\vs开发stm32\sysgcc\arm-eabi\sys-include\sys\string.h \
+ libcsp/include/csp/csp_buffer.h
 
 C:/Users/li/Desktop/freertos/FreeRTOS1/FreeRTOS/include/FreeRTOS.h:
 
@@ -150,3 +151,5 @@ h:\vs开发stm32\sysgcc\arm-eabi\sys-include\sys\lock.h:
 h:\vs开发stm32\sysgcc\arm-eabi\sys-include\sys\cdefs.h:
 
 h:\vs开发stm32\sysgcc\arm-eabi\sys-include\sys\string.h:
+
+libcsp/include/csp/csp_buffer.h:

@@ -45,15 +45,13 @@ CSP_DEFINE_TASK(task_server) {
 	csp_packet_t *packet;
 	csp_packet_t *response;
 
-
-
 	csp_bind(socket, CSP_ANY);
 	csp_listen(socket, 5);
 
 	printf("Server task started\r\n");
 
 	while (1) {
-		if ((conn = csp_accept(socket, 100)) == NULL) {
+		if ((conn = csp_accept(socket, 1000)) == NULL) {
 			continue;
 		}
 
@@ -112,7 +110,7 @@ void start_task(void *pvParameters)
 				(void*			)NULL,
 				(UBaseType_t	)DEBUG_TASK_PRIO,
 				(TaskHandle_t*	)&DebugTask_Handler);
-/*
+	/*
 	xTaskCreate((TaskFunction_t)i2c_master_task,
 				(const char*	)"i2c_master_task",
 				(uint16_t		)I2CMASTER_STK_SIZE,
@@ -126,21 +124,21 @@ void start_task(void *pvParameters)
 				(void*			)NULL,
 				(UBaseType_t	)I2CSLAVE_TASK_PRIO,
 				(TaskHandle_t*	)&I2CslaveTask_Handler);
-		*/				
+	*/
 	csp_thread_create((TaskFunction_t			)task_client, 
 					  (const signed char * const)"CLINET", 
 					  (unsigned short			)CLINER_STK_SIZE, 
 	  				  (void *					)NULL, 
 					  (unsigned int				)CSP_TASK_CLINET_PRIO, 
 					  (csp_thread_handle_t *	)&handle_client);
-	  
+	/*
 	csp_thread_create((TaskFunction_t			)task_server,
-					 (const signed char * const)"CLINET",
+					 (const signed char * const)"server",
 					 (unsigned short			)CLINER_STK_SIZE,
 					 (void *					)NULL,
 					 (unsigned int				)CSP_TASK_CLINET_PRIO,
 					 (csp_thread_handle_t *		)&handle_client);
-		
+	*/	
 	vTaskDelete(StartTask_Handler);
 	taskEXIT_CRITICAL();
 }

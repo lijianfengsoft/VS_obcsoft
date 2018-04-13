@@ -67,7 +67,8 @@ VisualGDB/Debug/bsp_init.o: bsp_user/bsp_init.c \
  C:/Users/li/Desktop/freertos/FreeRTOS1/FreeRTOS/include/task.h \
  C:/Users/li/Desktop/freertos/FreeRTOS1/FreeRTOS/include/list.h \
  libcsp/include/csp/interfaces/csp_if_kiss.h \
- libcsp/include/csp/csp_interface.h
+ libcsp/include/csp/csp_interface.h \
+ libcsp/include/csp/interfaces/csp_if_i2c.h
 
 C:/Users/li/Desktop/freertos/FreeRTOS1/FreeRTOS/include/FreeRTOS.h:
 
@@ -230,3 +231,5 @@ C:/Users/li/Desktop/freertos/FreeRTOS1/FreeRTOS/include/list.h:
 libcsp/include/csp/interfaces/csp_if_kiss.h:
 
 libcsp/include/csp/csp_interface.h:
+
+libcsp/include/csp/interfaces/csp_if_i2c.h:

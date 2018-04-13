@@ -142,7 +142,7 @@ CSP_DEFINE_TASK(task_client)
 	char *outbuf = "a-hello world";
 	char inbuf[100] = { 0 };
 	int result;
-	int node = 1;
+	int node = 2;
 
 	while (1)
 	{
@@ -157,7 +157,7 @@ CSP_DEFINE_TASK(task_client)
 				printf("10 -Quit response from server: %s\r\n", inbuf);
 				memset(inbuf, 0, sizeof(inbuf));
 			}
-			csp_sleep_ms(2000);
+			csp_sleep_ms(1000);
 	}
 
 	return CSP_TASK_RETURN;

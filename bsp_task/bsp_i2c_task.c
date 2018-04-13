@@ -41,16 +41,16 @@ void i2c_slave_task(void *param __attribute__((unused)))
 	while (1) 
 	{
 		flag = i2c_receive(handle, &frame, portMAX_DELAY);
-		//if (flag == E_NO_ERR) 
-		//{
-			//length = frame->len;
-			//printf("\r\nI2C receive handle %d, length: %u\n\r", handle, length);
-			//for (i = 0; i < length; i++) 
-			//{
-			//	printf("%x", frame->data[i]);
-			//}
-		/*}*/
-		//printf("\n");
+		if (flag == E_NO_ERR)
+		{
+			length = frame->len;
+			printf("\r\nI2C receive handle %d, length: %u\n\r", handle, length);
+			for (i = 0; i < length; i++)
+			{
+				printf("%x", frame->data[i]);
+			}
+		}
+		printf("\n");
 		vPortFree(frame);
 	}
 }
